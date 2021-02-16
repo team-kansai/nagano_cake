@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admin, controllers: {
+    sessions: 'admin/sessions'
+  }
   devise_for :customers
 
   root to: 'public/homes#top'
@@ -17,7 +20,7 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
   end
-  
+
   namespace :admin do
     get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
@@ -27,10 +30,10 @@ Rails.application.routes.draw do
     end
     resources :genres, only: [:index, :edit, :create, :update]
   end
-  
 
 
-  
+
+
 
 
 end
