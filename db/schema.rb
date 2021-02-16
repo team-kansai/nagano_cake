@@ -44,6 +44,18 @@ ActiveRecord::Schema.define(version: 2021_02_16_094724) do
     t.integer "production_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "postage"
+    t.integer "payment_method"
+    t.integer "total_price"
+    t.string "postcode"
+    t.string "address"
+    t.string "name"
+    t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -53,6 +65,14 @@ ActiveRecord::Schema.define(version: 2021_02_16_094724) do
     t.text "description"
     t.integer "price"
     t.boolean "is_active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "postcode"
+    t.string "address"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
