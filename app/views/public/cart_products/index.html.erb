@@ -22,7 +22,7 @@
               <% end %>
               <%= link_to '変更', cart_product_path(cart.id), method: :PATCH, class: 'btn btn-success btn-block' %>
             </td>
-            <td><%= ((cart.product.price*1.10)*(cart.quantity)).to_i %></td>
+            <td>￥<%= ((cart.product.price*1.10)*(cart.quantity)).to_i %></td>
             <td>
               <%= link_to '削除する', cart_product_path(cart.id), method: :delete, class: 'btn btn-danger btn-block' %>
             </td>
