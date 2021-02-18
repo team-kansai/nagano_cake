@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin, controllers: {
     sessions: 'admin/sessions'
   }
-  
+
   devise_for :customers, skip: [:registrations]
   as :customer do
     get 'sign_up', to: 'devise/registrations#new', as: :new_customer_registration
@@ -19,8 +19,8 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :products, only: [:index, :show]
-    resources :cart_products, only: [:index, :create, :update, :destroy]
     delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+    resources :cart_products, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
