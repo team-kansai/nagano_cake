@@ -1,6 +1,20 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.unsubscribe_message {
+  margin: 100px 0 0 50px;
+  text-align: center;
+}
+
+.unsubscribe_btn {
+  margin-left: 15px;
+}
+
+.unsubscribe_link {
+  margin-top: 30px;
+}
+
 .my_page {
   margin: 0px 0px 30px 100px;
   font-size: 25px;
