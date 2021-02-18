@@ -14,7 +14,7 @@
           </tr>
           <tr>
             <td class="info, col-xs-2">カナ</td>
-            <td class="text-left"><%= @customer.last_name %><%= @customer.first_name %></td>
+            <td class="text-left"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
           </tr>
           <tr>
             <td class="info, col-xs-2">郵便番号</td>
@@ -34,7 +34,7 @@
           </tr>
         </tbody>
       </table>
-      
+
       <p class="index_btn">
         <strong class="shipping_link">配送先</strong>
         <%= link_to '一覧を見る', shipping_addresses_path, class: "btn btn-primary w-25" %>
@@ -43,7 +43,7 @@
         <strong class="order_link">注文履歴</strong>
         <%= link_to '一覧を見る', orders_path, class: "btn btn-primary w-25" %>
       </p>
-      
+
     </div>
   </div>
 </div>
