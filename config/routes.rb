@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :admin, controllers: {
     sessions: 'admin/sessions'
   }
-  devise_for :customers
+  
+  devise_for :customers, skip: [:registrations]
+  as :customer do
+    get 'sign_up', to: 'devise/registrations#new', as: :new_customer_registration
+    post '', to: 'devise/registrations#create', as: :customer_registration
+  end
 
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
