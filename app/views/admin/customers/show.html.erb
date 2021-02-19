@@ -1,37 +1,47 @@
-<h3><%= @customer.last_name %><%= @customer.first_name %>の会員詳細</h3>
-<div>
-  <label for>会員ID</label>
-  <%= @customer.id %>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col">
+      <h4><span class="bg-light"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</span></h4>
+    </div>
+  </div>
+<div class="row mb-3">
+  <div class="col-md-3">会員ID</div>
+  <div class="col-md-8"><%= @customer.id %></div>
 </div>
-<div>
-  <label for>氏名</label>
-  <%= @customer.last_name %><%= @customer.first_name %>
+<div class="row mb-3">
+  <div class="col-md-3">氏名</div>
+  <div class="col-md-8">  <%= @customer.last_name %><%= @customer.first_name %></div>
 </div>
-<div>
-  <label for>フリガナ</label>
-  <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
+<div class="row mb-3">
+  <div class="col-md-3">フリガナ</div>
+  <div class="col-md-8"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></div>
 </div>
-<div>
-  <label for>郵便番号</label>
-  <%= @customer.postcode %>
+<div class="row mb-3">
+  <div class="col-md-3">郵便番号</div>
+  <div class="col-md-8"><%= @customer.postcode %></div>
 </div>
-<div>
-  <label for>住所</label>
-  <%= @customer.address %>
+<div class="row mb-3">
+  <div class="col-md-3">住所</div>
+  <div class="col-md-8"><%= @customer.address %></div>
 </div>
-<div>
-  <label for>電話番号</label>
-  <%= @customer.phone_number %>
+<div class="row mb-3">
+  <div class="col-md-3">電話番号</div>
+  <div class="col-md-8"><%= @customer.phone_number %></div>
 </div>
-<div>
-  <label for>メールアドレス</label>
-  <%= @customer.email %>
+<div class="row mb-3">
+  <div class="col-md-3">メールアドレス</div>
+  <div class="col-md-8"><%= @customer.email %></div>
 </div>
-<div>
-  <label for>会員ステータス</label>
-  <%= @customer.id %>
+<div class="row mb-3">
+  <div class="col-md-3">会員ステータス</div>
+  <div class="col-md-8">（仮）<%#enumで入力%></div>
 </div>
-
-<%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
-<%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>
-
+<div class="row mb-2">
+  <div class="col-md-2 offset-md-3">
+    <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
+  </div>
+  <div class="col-md-7 text-left">
+    <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>
+  </div>
+</div>
+</div>
