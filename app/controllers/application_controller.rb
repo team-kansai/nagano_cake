@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   def after_sign_in_path_for(resource)
     customers_my_page_path
   end
@@ -11,5 +11,4 @@ class ApplicationController < ActionController::Base
     [:last_name, :first_name, :last_name_kana, :first_name_kana, :email,
     :postcode, :address, :phone_number, :password, :password_confirmation])
   end
-  
-end
+  end

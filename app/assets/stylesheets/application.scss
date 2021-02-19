@@ -13,4 +13,17 @@
  *= require_tree .
  *= require_self
  */
-  @import "bootstrap";
+
+ @import "bootstrap";
+
+ .link_btn {
+   width: 100px;
+   text-align: center;
+   margin: 0 10px;
+   border: 1px solid gray;
+   border-radius: 8px;
+ }
+
+ .link_btn:hover {
+   background-color: #EEEEEE;
+ }
