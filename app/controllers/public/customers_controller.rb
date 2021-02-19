@@ -16,7 +16,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     @customer = current_customer
     #現在ログインしているユーザーを@customerに格納
-    @customer.update(is_deleted: "1")
+    @customer.update(is_deleted: true)
     #updateで登録情報を退会済に変更
     reset_session
     #sessionIDのresetを行う
