@@ -5,7 +5,6 @@ class Public::SessionsController < ApplicationController
   end
   
   def create
-    @customer = Customer.new()
   end
 
 
