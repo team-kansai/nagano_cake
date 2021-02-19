@@ -11,4 +11,4 @@ class ApplicationController < ActionController::Base
     [:last_name, :first_name, :last_name_kana, :first_name_kana, :email,
     :postcode, :address, :phone_number, :password, :password_confirmation])
   end
-  end
+end
