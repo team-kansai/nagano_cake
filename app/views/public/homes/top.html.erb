@@ -1,18 +1,31 @@
-<p>
-  ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない⽅も商品の閲覧はできますが、<br>
-購⼊には会員登録が必要になります。
-</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <p class="text-left border border-black">
+        ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない⽅も商品の閲覧はできますが、<br>
+      購⼊には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+  <h2>新着商品</h2>
+    <div class="row">
+      <% @products.each do |product| %>
+      <div class="col-md-2 offset-md-1">
+        <%= link_to product_path(product.id) do %>
+          <%= attachment_image_tag(product, :image, fallback: "no_image.jpg", size:'100x100') %>
+        <% end %>
+        <p><%= product.name %></p>
+        <p>￥<%= product.price %></p>
+      </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col text-right">
+        <%= link_to "全ての商品を見る>", products_path %>      
+      </div>
+    </div>
+</div>
 
-<h2>新着商品</h2>
-
-<% @products.each do |product| %>
-  <%= link_to product_path(product.id) do %>
-    <%= attachment_image_tag(product, :image, fallback: "no_image.jpg", size:'100x100') %>
-  <% end %>
-  <P><%= product.name %></P>
-  <P>￥<%= product.price %></P>
-<% end %>
-<%= link_to "全ての商品を見る>", products_path %>
 
