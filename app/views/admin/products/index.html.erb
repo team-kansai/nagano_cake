@@ -1,0 +1,41 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col'>
+      商品一覧
+    </div>
+    <div class='col'>
+      <%= link_to "商品投稿", new_admin_product_path %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <table>
+      <th></th>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+      <tb>
+        <% @products.each do |products| %>
+          <tr>
+            <td><%= products.id %></td>
+            <td>
+              <%= link_to admin_product_path(products.id) do %>
+                <%= products.name %>
+              <% end %>
+            </td>
+            <td><%= products.price %></td>
+            <td><%= products.genre.id %></td>
+            <td><%= products.is_active %></td>
+          </tr>
+        <% end %>
+      </tb>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-auto mx-auto"><%= paginate @products %></div>
+  </div>
+</div>
