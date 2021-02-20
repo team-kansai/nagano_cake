@@ -15,6 +15,7 @@
             <th></th>
           </tr>
           <tb>
+            <% @sum = 0 %>
             <% @cart.each do |cart| %>
               <tr>
                 <td><%= cart.product.name %></td>
@@ -27,9 +28,12 @@
                 </td>
                 <td>
                   ￥<%= ((cart.product.price*1.10)*(cart.quantity)).to_i %>
+                  <% @sum +=  ((cart.product.price*1.10)*(cart.quantity)).to_i %>
                 </td>
                 <td>
-                  <%= link_to '削除する', cart_product_path(cart.id), method: :delete, class: 'btn btn-danger' %>
+                  <div class="text-center">
+                    <%= link_to '削除する', cart_product_path(cart.id), method: :delete, class: 'btn btn-danger' %>
+                  </div>
                 </td>
               </tr>
             <% end %>
@@ -45,7 +49,7 @@
           <tr>
             <td class="text-left">合計金額</td>
             <td class="text-left">
-              ¥<%#= total_price(@cart).to_s(:delimited) %>
+              ¥<%= @sum %>
               <!--カート内商品の合計金額の表示を行う-->
             </td>
           </tr>
