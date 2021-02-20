@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'devise/registrations#new', as: :new_customer_registration
     post '', to: 'devise/registrations#create', as: :customer_registration
   end
-  devise_for :customers
 
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
