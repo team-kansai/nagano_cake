@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row">
+    <h4 class="col offset-md-1 mb-md-5">注文履歴詳細</h4>
+  </div>
+  <div class="row mb-md-5">
+    <!--form_withでデータ取ってくる記述-->
+    <div class="col-md-2 mb-md-2">購入者</div>
+    <!--名前を押したら会員詳細画面にいくように-->
+    <div class="col-md-10">★★★購入者名表示←会員詳細へのリンク付</div>
+    <div class="col-md-2 mb-md-2">注文日</div>
+    <div class="col-md-10">★★★注文日を表示</div>
+    <div class="col-md-2 mb-md-2">配送先</div>
+    <div class="col-md-10">
+      <p>★★★配送先の郵便番号と住所を表示</p>
+      <p>★★★配送先宛名表示</p>
+    </div>
+    <div class="col-md-2 mb-md-2">支払方法</div>
+    <div class="col-md-10">★★★支払方法を表示</div>
+    <div class="col-md-2 mb-md-2">注文ステータス</div>
+    <div class="col-md-10">★★★プルダウンの選択ボックス＋更新ボタン</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!--each文挿入-->
+            <tr>
+              <td>
+                商品名表示
+              </td>
+              <td>
+                単価表示
+              </td>
+              <td>
+                数量表示
+              </td>
+              <td>
+                <!--プルダウンでステータス変更できるように-->
+                注文ステータス表示
+              </td>
+              <td>
+                <!--緑の更新ボタン表示-->
+                更新ボタン表示
+              </td>
+            </tr>
+            <tr>
+              <td>
+                商品名表示
+              </td>
+              <td>
+                単価表示
+              </td>
+              <td>
+                数量表示
+              </td>
+              <td>
+                <!--プルダウンでステータス変更できるように-->
+                注文ステータス表示
+              </td>
+              <td>
+                <!--緑の更新ボタン表示-->
+                更新ボタン表示
+              </td>
+            </tr>
+            <tr>
+              <td>
+                商品名表示
+              </td>
+              <td>
+                単価表示
+              </td>
+              <td>
+                数量表示
+              </td>
+              <td>
+                <!--プルダウンでステータス変更できるように-->
+                注文ステータス表示
+              </td>
+              <td>
+                <!--緑の更新ボタン表示-->
+                更新ボタン表示
+              </td>
+            </tr>
+          <!--% end % を記述-->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-3 mt-auto">
+      <ul class="list-inline">
+        <li class="list-inline-item">商品合計</li>
+        <li class="list-inline-item">○○○円</li>
+      </ul>
+      <ul class="list-inline">
+        <li class="list-inline-item">送料</li>
+        <li class="list-inline-item">○○○円</li>
+      </ul>
+      <ul class="list-inline">
+        <li class="list-inline-item">請求金額合計</li>
+        <li class="list-inline-item">○○○円</li>
+      </ul>
+    </div>
+  </div>
