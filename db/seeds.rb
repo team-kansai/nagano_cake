@@ -7,7 +7,7 @@ Admin.create!(
   Customer.create!(
     last_name: "田中",
     first_name: "太朗#{n + 1}",
-    last_name_kana: "タナカ",  
+    last_name_kana: "タナカ",
     first_name_kana: "タロウ#{n + 1}",
     email: "test#{n + 1}@test",
     postcode: "111-1111",
