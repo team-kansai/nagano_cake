@@ -9,15 +9,15 @@ class Public::CartProductsController < ApplicationController
     @cart.save
     redirect_to cart_products_path
   end
-
+  
   def update
-    # @cart = CartProduct.find(params[:id])
+    @cart = CartProduct.find(params[:id])
     # @cart.update(cart_product_params)
     # @cart = CartProduct.find_by(params[:quantity])
     @cart.update(quantity: params[:quantity].to_i)
     redirect_to cart_products_path
   end
-
+  
   def destroy
     @cart = CartProduct.find(params[:id])
     @cart.destroy
@@ -31,10 +31,10 @@ class Public::CartProductsController < ApplicationController
   end
 
   private
-  
-  def cart_params
-    params.permit(:customer_id, :product_id, :quantity)
-  end
+
+  # def cart_params
+  #   params.permit(:customer_id, :product_id, :quantity)
+  # end
 
   def cart_product_params
     params.require(:cart_product).permit(:customer_id, :product_id, :quantity)
