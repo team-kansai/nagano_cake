@@ -13,8 +13,7 @@ Admin.create!(
     postcode: "111-1111",
     address: "東京都中央区銀座",
     phone_number: "111-1111-1111",
-    password: "testtest",
-    is_deleted: "0"
+    password: "testtest"
   )
 end
 
