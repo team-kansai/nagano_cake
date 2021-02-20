@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @products = Product.all
@@ -18,21 +19,21 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(post_product_params)
-    @product.save
-    redirect_to admin_product_path(params[:id])
+    @product = Product.new(product_params)
+    @product.save(product_params)
+    redirect_to admin_product_path(@product)
   end
 
   def update
     @product = Product.find(params[:id])
-    @product.update
+    @product.update(product_params)
     redirect_to admin_product_path(params[:id])
   end
 
     private
 
-  def post_product_params
-    params.require(:product).permit(:genre_id, :image_id, :name, :description, :price, :is_active)
+  def product_params
+    params.require(:product).permit(:genre_id, :image, :name, :description, :price, :is_active)
   end
 
 end
