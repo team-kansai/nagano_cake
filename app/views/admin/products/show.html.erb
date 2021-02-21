@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+      商品詳細
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <%= attachment_image_tag(@product, :image, fallback: "no_image.jpg", size:'100x100') %>
+    </div>
+    <div class=col>
+      <table>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>商品名</td>
+          <td><%= @product.name %></td>
+        </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= @product.description %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @product.genre_id %></td>
+        </tr>
+        <tr>
+          <td>税込価格(税抜価格)</td>
+          <td>￥<%= (@product.price*1.10).to_i %><span class="small">（税込）</td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <td>販売中</td>
+        </tr>
+      </table>
+
+      <%= link_to '編集する', edit_admin_product_path, class: 'btn btn-success btn-sm' %>
+    </div>
+
+  </div>
+</div>
