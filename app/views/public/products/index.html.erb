@@ -9,7 +9,7 @@
         <%= attachment_image_tag(product, :image, fallback: "no_image.jpg", size:'100x100') %>
       <% end %>
       <P><%= product.name %></P>
-      <P>￥<%= product.price %></P>
+      <P>￥<%= product.price.to_s(:delimited) %></P>
     </div>
     <% end %>
   </div>
