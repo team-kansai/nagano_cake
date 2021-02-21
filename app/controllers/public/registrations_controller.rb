@@ -1,12 +1,13 @@
-class Public::RegistrationsController < ApplicationController
+class Public::RegistrationsController < Devise::RegistrationsController
+  
+  def after_sign_in_path_for(resource)
+    customers_my_page_path
+  end 
   
   def new
-    @customer = Customer.new
   end
 
   def create
-    customer = Customer.new(configure_permitted_parameters)
-    customer.save
   end
   
 
