@@ -7,7 +7,7 @@
     <div class="col-md-5">
       <h3 class="product-box"><%= @product.name %></h3>
       <P class="product-box"><%= @product.description %></P>
-      <h5 class="product-box">￥<%= (@product.price*1.10).to_i %><span class="small">（税込）</span></h5>
+      <h5 class="product-box">￥<%= ((@product.price*1.10).to_i).to_s(:delimited) %><span class="small">（税込）</span></h5>
       <%= form_with model: @cart, local:true do |f| %>
         <a class="product-price">
         <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
