@@ -3,21 +3,32 @@
     <h4 class="col offset-md-1 mb-md-5">注文履歴詳細</h4>
   </div>
   <div class="row mb-md-5">
-    <!--form_withでデータ取ってくる記述-->
     <div class="col-md-2 mb-md-2">購入者</div>
-    <!--名前を押したら会員詳細画面にいくように-->
-    <div class="col-md-10">★★★購入者名表示←会員詳細へのリンク付</div>
+    <div class="col-md-10">
+      <%= link_to admin_customer_path(@order) do %>
+        <%= @order.customer.full_name %>
+      <% end %>
+    </div>
     <div class="col-md-2 mb-md-2">注文日</div>
-    <div class="col-md-10">★★★注文日を表示</div>
+    <div class="col-md-10">
+      <%= @order.created_at.strftime('%Y/%m/%d') %>
+    </div>
     <div class="col-md-2 mb-md-2">配送先</div>
     <div class="col-md-10">
-      <p>★★★配送先の郵便番号と住所を表示</p>
-      <p>★★★配送先宛名表示</p>
+      <p><%= @order.postcode %><%= @order.address %></p>
+      <p><%= @order.name %></p>
     </div>
     <div class="col-md-2 mb-md-2">支払方法</div>
-    <div class="col-md-10">★★★支払方法を表示</div>
+    <div class="col-md-10">
+      <%= @order.payment_method %>
+    </div>
     <div class="col-md-2 mb-md-2">注文ステータス</div>
-    <div class="col-md-10">★★★プルダウンの選択ボックス＋更新ボタン</div>
+    <div class="col-md-2">
+      <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local:true do |f| %>
+        <%= f.select :order_status, Order.order_statuses.keys.map {|k| [k, k]}, {}, { class: "form-control", style: 'margin-bottom: 15px;', data: {} } %>
+        <%= f.submit '更新', class: 'btn btn-success inline' %>
+      <% end %>
+    </div>
   </div>
 
   <div class="row">
@@ -35,65 +46,30 @@
         </thead>
 
         <tbody>
-          <!--each文挿入-->
+          <% @order_products.each do |order_product| %>
             <tr>
               <td>
-                商品名表示
+                <%= order_product.product.name %>
               </td>
               <td>
-                単価表示
+                <%= (order_product.with_tax_price).to_s(:delimited) %>
               </td>
               <td>
-                数量表示
+                <%= order_product.quantity %>
               </td>
               <td>
-                <!--プルダウンでステータス変更できるように-->
-                注文ステータス表示
+                <%= (order_product.with_tax_price * order_product.quantity).to_s(:delimited) %>
+              </td>
+                <%= form_with(model:[:admin, @order, order_product], local: true) do |f| %>
+              <td>
+                <%= f.select :production_status, OrderedProduct.production_statuses.keys.map {|k| [k, k]}, {}, { class: "form-control", style: 'margin-bottom: 15px;', data: {} } %>
               </td>
               <td>
-                <!--緑の更新ボタン表示-->
-                更新ボタン表示
+                <%= f.submit '更新', class: 'btn btn-success' %>
               </td>
+              <% end %>
             </tr>
-            <tr>
-              <td>
-                商品名表示
-              </td>
-              <td>
-                単価表示
-              </td>
-              <td>
-                数量表示
-              </td>
-              <td>
-                <!--プルダウンでステータス変更できるように-->
-                注文ステータス表示
-              </td>
-              <td>
-                <!--緑の更新ボタン表示-->
-                更新ボタン表示
-              </td>
-            </tr>
-            <tr>
-              <td>
-                商品名表示
-              </td>
-              <td>
-                単価表示
-              </td>
-              <td>
-                数量表示
-              </td>
-              <td>
-                <!--プルダウンでステータス変更できるように-->
-                注文ステータス表示
-              </td>
-              <td>
-                <!--緑の更新ボタン表示-->
-                更新ボタン表示
-              </td>
-            </tr>
-          <!--% end % を記述-->
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -101,15 +77,15 @@
     <div class="col-md-3 mt-auto">
       <ul class="list-inline">
         <li class="list-inline-item">商品合計</li>
-        <li class="list-inline-item">○○○円</li>
+        <li class="list-inline-item"><%= (@order.total_price).to_s(:delimited) %>円</li>
       </ul>
       <ul class="list-inline">
         <li class="list-inline-item">送料</li>
-        <li class="list-inline-item">○○○円</li>
+        <li class="list-inline-item"><%= @order.postage %>円</li>
       </ul>
       <ul class="list-inline">
         <li class="list-inline-item">請求金額合計</li>
-        <li class="list-inline-item">○○○円</li>
+        <li class="list-inline-item"><%= (@order.total_price + @order.postage).to_s(:delimited) %>円</li>
       </ul>
     </div>
   </div>
