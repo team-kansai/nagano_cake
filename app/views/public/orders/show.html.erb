@@ -8,23 +8,23 @@
       <table class="table table-bordered">
         <tr>
           <td class="col-xs-2 table-light">注文日</td>
-          <td>注文日<%# %></td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <td class="table-light"><p class="align-middle">配送先</p></td>
           <td>
-            〒マー郵便番号<br>
-            住所<br>
-              宛名
+            〒<%= @order.postcode %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
           </td>
         </tr>
         <tr>
           <td class="table-light">支払方法</td>
-          <td>支払方法<%# %></td>
+          <td><%= @order.payment_method %></td>
         </tr>
         <tr>
           <td class="table-light">ステータス</td>
-          <td>ステータス<%# %></td>
+          <td><%= @order.order_status %></td>
         </tr>
       </table>
     </div>
@@ -33,15 +33,15 @@
       <table class="table table-bordered">
         <tr>
           <td class="table-light">商品合計</td>
-          <td>商品合計<%# %></td>
+          <td><%= @order.total_price %></td>
         </tr>
         <tr>
           <td class="table-light">配送料</td>
-          <td>配送料<%# %></td>
+          <td><%= @order.postage %></td>
         </tr>
         <tr>
           <td class="table-light"><strong>ご請求額</strong></th>
-          <td><%# %></td>
+          <td><%= @order.total_price + @order.postage %></td>
         </tr>
       </table>
     </div>
@@ -56,14 +56,14 @@
           <td>個数</td>
           <td>小計</td>
         </tr>
-        <%# each文%>
+        <% @order.ordered_products.each do |ordered_product| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= ordered_product.product.name %></td>
+          <td><%= ordered_product.with_tax_price %></td>
+          <td><%= ordered_product.quantity %></td>
+          <td><%= ordered_product.with_tax_price * ordered_product.quantity %></td>
         </tr>
-        <%# end %>
+        <% end %>  
       </table>
     </div>
   </div>
