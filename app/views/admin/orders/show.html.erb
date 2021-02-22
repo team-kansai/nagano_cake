@@ -62,7 +62,7 @@
               </td>
                 <%= form_with(model:[:admin, @order, order_product], local: true) do |f| %>
               <td>
-                <%= f.select :production_status, OrderedProduct.production_statuses.keys, { class: 'form-control', style: 'margin-bottom: 15px;', data: {} } %>
+                <%= f.select :production_status, OrderedProduct.production_statuses.keys.map {|k| [k, k]}, {}, { class: "form-control", style: 'margin-bottom: 15px;', data: {} } %>
               </td>
               <td>
                 <%= f.submit '更新', class: 'btn btn-success' %>
