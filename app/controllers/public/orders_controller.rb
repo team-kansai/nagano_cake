@@ -17,8 +17,12 @@ class Public::OrdersController < ApplicationController
       @order.address = shipping_address.address
       @order.postcode = shipping_address.postcode
       @order.name = shipping_address.name
+    elsif params[:order][:shipping_address] == "2"
+      @order.address = params[:order][:address]
+      @order.postcode = params[:order][:postcode]
+      @order.name = params[:order][:name]
+      current_customer.shipping_addresses.create(shipping_address_params)
     end
-
   end
 
   def create
@@ -54,6 +58,10 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:payment_method, :postcode, :address, :name, :postage, :total_price, :order_status)
+  end
+
+  def shipping_address_params
+    params.require(:order).permit(:postcode, :address, :name)
   end
 
 end
