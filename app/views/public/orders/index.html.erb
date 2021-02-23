@@ -28,7 +28,7 @@
                       <%= ordered_product.product.name %><br>
                     <% end %>
                   </td>
-                  <td><%= order.total_price + order.postage %>円</td>
+                  <td><%= (order.total_price + order.postage).to_s(:delimited) %>円</td>
                   <td><%= order.order_status %></td>
                   <td>
                     <div class="text-center">

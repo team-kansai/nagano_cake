@@ -12,7 +12,7 @@
   <div class='row'>
     <div class="col offset-md-1">
       <table class="table">
-        <thead>
+        <thead class="thead-light">
         <tr>
           <th>商品ID</th>
           <th>商品名</th>
@@ -31,7 +31,7 @@
                   <%= products.name %>
                 <% end %>
               </td>
-              <td><%= products.price %></td>
+              <td><%= (products.price).to_s(:delimited) %></td>
               <td><%= products.genre.id %></td>
               <td><%= products.is_active %></td>
             </tr>
