@@ -15,7 +15,10 @@
             <% @sum = 0 %>
             <% @cart.each do |cart| %>
               <tr>
-                <td><%= cart.product.name %></td>
+                <td>
+                  <%= attachment_image_tag( cart.product, :image, size: "55x43", fallback: "no_image.jpg") %>
+                  <%= cart.product.name %>
+                </td>
                 <td><%= ((cart.product.price*1.10).to_i).to_s(:delimited) %></td>
                 <td><%= cart.quantity %></td>
                 <td>
