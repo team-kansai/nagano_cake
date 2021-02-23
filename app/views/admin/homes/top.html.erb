@@ -1,1 +1,48 @@
-<h1>管理者トップ</h1>
+<div class="container">
+  <div class="row">
+    <h4 class="col offset-md-1 mb-md-5">注文履歴一覧</h4>
+  </div>
+  <div class="row">
+    <div class="col offset-md-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @quantity_sum = 0 %>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_order_path(order) do %>
+                  <%= order.created_at.strftime('%Y/%m/%d %T') %>
+                <% end %>
+              </td>
+              <td>
+                <%= order.customer.full_name %>
+              </td>
+              <td>
+                <% order.ordered_products.each do |ordered_product| %>
+                  <% ordered_product.quantity %>
+                  <% @quantity_sum += ordered_product.quantity %>
+                <% end %>
+                <%= @quantity_sum %>
+              </td>
+              <td>
+                <%= order.order_status %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto mx-auto"><%= paginate @orders %></div>
+  </div>
+</div>
