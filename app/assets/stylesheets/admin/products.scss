@@ -1,0 +1,35 @@
+// Place all the styles related to the admin/products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pagination span {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.container {
+  margin-top: 80px;
+}
+
+.product-box {
+  margin-bottom: 20px;
+}
+
+.product-price {
+  margin-right: 20px;
+}
+
+#cart_product_quantity {
+  width: 100px;
+  height: 35px;
+  border-radius: 10px;
+}
+
+.no-underline {
+  text-decoration:none !important;
+  color: gray;
+}
+
+.submit_botton {
+  width: 200px;
+}

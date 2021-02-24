@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+ .top_img {
+  background-image: url('cake1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+}
+
+.top_logo {
+ position: absolute;
+ top: 102px;
+ right: 158px;
+}
+
+.top_text {
+ opacity: 0.8;
+}

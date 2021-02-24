@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+
+      <div class="unsubscribe_message">
+        <p><strong>本当に退会しますか？</strong></p>
+        <p>
+          退会すると、会員登録情報や<br>
+          これまでの購⼊履歴が閲覧できなくなります。<br>
+          退会する場合は、「退会する」をクリックしてください
+        </p>
+
+        <div class= "unsubscribe_link">
+          <%= link_to '退会しない', customers_my_page_path, class: 'btn btn-primary w-25' %>
+          <%= link_to '退会する', customers_withdraw_path, method: :PATCH, class: 'btn btn-danger w-25 unsubscribe_btn' %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
