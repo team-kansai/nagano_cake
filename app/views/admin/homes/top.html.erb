@@ -15,7 +15,6 @@
         </thead>
 
         <tbody>
-          <% @quantity_sum = 0 %>
           <% @orders.each do |order| %>
             <tr>
               <td>
@@ -26,6 +25,7 @@
               <td>
                 <%= order.customer.full_name %>
               </td>
+              <% @quantity_sum = 0 %>
               <td>
                 <% order.ordered_products.each do |ordered_product| %>
                   <% ordered_product.quantity %>
